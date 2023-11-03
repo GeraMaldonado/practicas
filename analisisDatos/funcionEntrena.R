@@ -77,13 +77,3 @@ Entrena <- function(datos, K, formula){
   print(entrenamiento)
   print(prueba)
 }
-
-
-Entrena(datosCancer, 4, "classification ~ s_circularity + i_kurtosis + t_corr + t_inf1h ")
-
-
-datosCancer <- read.csv("~/Descargas/bcdr_d01_features.csv")
-
-datosCancer$classification[datosCancer$classification== "Benign"] <- 0
-datosCancer$classification[datosCancer$classification== "Malign"] <- 1
-datosCancer$classification <- as.numeric(datosCancer$classification)
