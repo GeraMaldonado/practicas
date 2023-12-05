@@ -3,16 +3,23 @@ import matplotlib.animation as animation
 
 def InsertionSort(lista):
     fig, ax = plt.subplots()
-    ax.bar(range(len(lista)), lista, align='edge')
+    bars = ax.bar(range(len(lista)), lista, align='edge')
+
     for i in range(1, len(lista)):
         for j in range(i, 0, -1):
             if lista[j] < lista[j-1]:
                 lista[j], lista[j-1] = lista[j-1], lista[j]
+
                 ax.clear()
-                ax.bar(range(len(lista)), lista, align='edge')
-                plt.pause(0.1)
+                bars = ax.bar(range(len(lista)), lista, align='edge', color='blue')
+
+                bars[j].set_color('red')
+                bars[j-1].set_color('red')
+
+                plt.pause(1)
             else:
                 break
+
     plt.show()
 
 def BubbleSort(lista):
