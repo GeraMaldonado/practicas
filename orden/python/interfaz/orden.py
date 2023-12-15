@@ -111,3 +111,21 @@ def QuickSort(lista):
         izq = QuickSort(izq)
         der = QuickSort(der)
     return izq + [pivote] + der
+
+def CountSort(lista):
+    resultado = [0] * len(lista)
+    indices = {}
+    j = 0
+    for i in range(max(lista)+1):
+        indices[i] = lista.count(i)
+    print(indices)
+
+    for i in range(1,max(lista)+1):
+        indices[i] = indices[i-1] + indices[i]
+    print(indices)
+
+    for i in lista:
+        resultado[indices[i]-1] = i
+        indices[i] -= 1
+    print(indices)
+    return resultado
