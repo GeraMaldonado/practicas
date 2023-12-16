@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-def InsertionSort(lista):
+def insertionSort(lista):
     fig, ax = plt.subplots()
     barras = ax.bar(range(len(lista)), lista, align='edge')
 
@@ -21,8 +21,9 @@ def InsertionSort(lista):
                 break
     barras = ax.bar(range(len(lista)), lista, align='edge')
     plt.show()
+    return lista
 
-def BubbleSort(lista):
+def bubbleSort(lista):
     fig, ax = plt.subplots()
     barras = ax.bar(range(len(lista)), lista, align='edge')
 
@@ -39,6 +40,7 @@ def BubbleSort(lista):
                 plt.pause(.1)
     barras = ax.bar(range(len(lista)), lista, align='edge')
     plt.show()
+    return lista
 
 
 def mergeSort(lista):
@@ -95,7 +97,9 @@ def mergeSort(lista):
 
     separar(lista, 0, len(lista))
     plt.show()
-def QuickSort(lista):
+    return lista
+
+def quickSort(lista):
     if(len(lista)<=1):
         return lista
     else:
@@ -108,11 +112,11 @@ def QuickSort(lista):
             else:
                 der.append(i)
         
-        izq = QuickSort(izq)
-        der = QuickSort(der)
+        izq = quickSort(izq)
+        der = quickSort(der)
     return izq + [pivote] + der
 
-def CountSort(lista):
+def countSort(lista):
     resultado = [0] * len(lista)
     indices = {}
     j = 0
@@ -136,7 +140,6 @@ def radixSort(lista):
     exp = 1
 
     while max_num // exp > 0:
-        # Counting Sort
         n = len(lista)
         output = [0] * n
         count = [0] * 10
@@ -158,9 +161,7 @@ def radixSort(lista):
         for i in range(n):
             lista[i] = output[i]
 
-        # Print del proceso
         print(f"{lista}")
-
         exp *= 10
     return lista
 
