@@ -163,3 +163,24 @@ def radixSort(lista):
 
         exp *= 10
     return lista
+
+
+def bucketSort(lista):
+    maxVal, minVal = max(lista), min(lista)
+    bucketRange = (maxVal - minVal) / len(lista)
+    buckets = [[] for _ in range(len(lista))]
+
+    for i in lista:
+        index = int((i - minVal) // bucketRange)
+        buckets[index].append(i)
+
+    for i in range(len(lista)):
+        buckets[i] = sorted(buckets[i])
+
+    sortedArr = []
+    for i in buckets:
+        sortedArr += i
+
+    return sortedArr
+
+
