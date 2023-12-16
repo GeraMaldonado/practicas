@@ -129,3 +129,37 @@ def CountSort(lista):
         indices[i] -= 1
     print(indices)
     return resultado
+
+
+def radixSort(lista):
+    max_num = max(lista)
+    exp = 1
+
+    while max_num // exp > 0:
+        # Counting Sort
+        n = len(lista)
+        output = [0] * n
+        count = [0] * 10
+
+        for i in range(n):
+            index = lista[i] // exp
+            count[index % 10] += 1
+
+        for i in range(1, 10):
+            count[i] += count[i - 1]
+
+        i = n - 1
+        while i >= 0:
+            index = lista[i] // exp
+            output[count[index % 10] - 1] = lista[i]
+            count[index % 10] -= 1
+            i -= 1
+
+        for i in range(n):
+            lista[i] = output[i]
+
+        # Print del proceso
+        print(f"{lista}")
+
+        exp *= 10
+    return lista
